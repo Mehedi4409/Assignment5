@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mock</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="mx-10">
+    <!-- seat and form part -->
+    <div class="flex gap-8 m-10">
+        <!-- seat selection part -->
+        <div class="flex flex-col gap-8">
+            <h2 class="text-3xl font-bold">Select Your Seat</h2>
+            <hr>
+            <!-- select/available -->
+            <div class="flex justify-between">
+
+                <!-- available -->
+                <div class="flex gap-2">
+                    <img src="images/seat-gray.png" alt="">
+                    <p class="text-sm font-semibold">Available</p>
+                </div>
+                <!-- selected -->
+                <div class="flex gap-2">
+                    <img src="images/seat-green-filled.png" alt="">
+                    <p class="text-sm font-semibold">Selected</p>
+                </div>
+            </div>
+            <hr>
+            <!-- driver seat -->
+            <div class="flex justify-end">
+                <button class="btn px-12"><img class="w-6" src="images/steering-wheel-svgrepo-com.svg" alt=""><button>
+            </div>
+            <!-- seat plan -->
+            <div class="flex">
+                <!-- abc row -->
+                <div class="flex flex-col gap-4 ">
+                    <p class="text-sm font-semibold p-4">A</p>
+                    <p class="text-sm font-semibold p-4">B</p>
+                    <p class="text-sm font-semibold p-4">C</p>
+                    <p class="text-sm font-semibold p-4">D</p>
+                    <p class="text-sm font-semibold p-4">E</p>
+                    <p class="text-sm font-semibold p-4">F</p>
+                </div>
+
+                <!-- seats -->
+                <div class="seats grid grid-cols-4 grid-rows-6 gap-4 w-full">
+                    <button class="btn px-12">A1</button>
+                    <button class="btn px-12">A2</button>
+                    <button class="btn px-12">A3</button>
+                    <button class="btn px-12">A4</button>
+                    <button class="btn px-12">B1</button>
+                    <button class="btn px-12">B2</button>
+                    <button class="btn px-12">B3</button>
+                    <button class="btn px-12">B4</button>
+                    <button class="btn px-12">C1</button>
+                    <button class="btn px-12">C2</button>
+                    <button class="btn px-12">C3</button>
+                    <button class="btn px-12">C4</button>
+                    <button class="btn px-12">D1</button>
+                    <button class="btn px-12">D2</button>
+                    <button class="btn px-12">D3</button>
+                    <button class="btn px-12">D4</button>
+                    <button class="btn px-12">E1</button>
+                    <button class="btn px-12">E2</button>
+                    <button class="btn px-12">E3</button>
+                    <button class="btn px-12">E4</button>
+                    <button class="btn px-12">F1</button>
+                    <button class="btn px-12">F2</button>
+                    <button class="btn px-12">F3</button>
+                    <button class="btn px-12">F4</button>
+                </div>
+            </div>
+        </div>
+        <!-- price and form part -->
+        <div class="mb-10">
+            <h2 class="text-3xl font-bold p-2">Select Your Seat</h2>
+            <hr>
+            <!-- seat price& coupon part -->
+            <div class="card w-96 bg-base-100 shadow-xl p-2 mt-4">
+                <div class="card-body">
+                    <!-- index part -->
+                    <div class="flex justify-between gap-4">
+                        <!-- seat count -->
+                        <div class="flex gap-2 w-20">
+                            <p class="text-sm font-semibold">Seat</p>
+                            <p class="text-sm font-semibold bg-green-600 px-2 rounded-lg text-white text-center ">0</p>
+                        </div>
+                        <p class="text-sm font-semibold  w-20 text-center">Class</p>
+                        <p class="text-sm font-semibold  text-end w-20">Price</p>
+                    </div>
+                    <hr>
+                    <!-- ticket description -->
+                    <div class="flex justify-between gap-4 p-2">
+                        <p class="text-sm font-semibold  w-20 text-start">C2</p>
+                        <p class="text-sm font-semibold  w-20 text-center">Economy</p>
+                        <p class="text-sm font-semibold  w-20 text-end">550</p>
+                    </div>
+                    <div class="flex justify-between gap-4 p-2">
+                        <p class="text-sm font-semibold  w-20 text-staet">C2</p>
+                        <p class="text-sm font-semibold  w-20 text-center">Economy</p>
+                        <p class="text-sm font-semibold  w-20 text-end">550</p>
+                    </div>
+                    <hr>
+                    <!-- totalprice -->
+                    <div class="flex justify-between gap-4 p-2">
+                        <p class="text-sm font-semibold  w-20 text-start">Total Price</p>
+                        <p class="text-sm font-semibold  w-20 text-end">BDT 1100</p>
+                    </div>
+                    <!-- Enter coupon -->
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Enter Your Coupon here"
+                            class="input input-bordered input-success w-full max-w-xs" />
+                        <button class="btn bg-green-600 text-white">Button</button>
+                    </div>
+                    <!-- grand total -->
+                    <div class="flex justify-between gap-4 p-2">
+                        <p class="text-sm font-semibold  w-20 text-start">Grand Total</p>
+                        <p class="text-sm font-semibold  w-20 text-end">BDT 1100</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- form part -->
+            <div class="">
+                <div class="card w-96 bg-base-100 shadow-xl my-8">
+                    <div class="card-body">
+                        <!-- name lable -->
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text text-sm font-semibold text-start">Passenger Name</span>
+                            </div>
+                            <input type="text" placeholder="Enter your name"
+                                class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <!-- ph number lable -->
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text text-sm font-semibold text-start">Phone Number</span>
+                            </div>
+                            <input type="text" placeholder="Enter your phone number"
+                                class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <!-- email lable -->
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text text-sm font-semibold text-start">Eamil ID</span>
+                            </div>
+                            <input type="text" placeholder="Enter your email ID"
+                                class="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <button class="btn bg-green-600 text-white w-full mt-2">Next</button>
+                        <!-- link part -->
+                        <div class=" flex justify-between my-2">
+                            <a class="link link-hover">Terms and Conditions</a>
+                            <a class="link link-hover">Cencelation Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

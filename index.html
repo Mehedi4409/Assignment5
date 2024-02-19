@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
@@ -60,7 +60,7 @@
             results directly
             within the app. <br> The integrated testing features allow for a streamlined</p>
 
-          <button class="btn bg-green-600 w-36 text-white">Buy Tickets</button>
+          <button id="to-ph" class="btn bg-green-600 w-36 text-white">Buy Tickets</button>
         </div>
       </div>
 
@@ -197,8 +197,8 @@
               <!-- Seat number -->
               <div class="flex gap-2 bg-slate-100 w-44 rounded-xl flex-row justify-center items-center p-2">
                 <img src="images/seat-green-filled.png" alt="">
-                <p>40</p>
-                <p>Seat left</p>
+                <p class="text-sm font-semibold text-center "><span id="seat-left">24</span></p>
+                <p class="text-sm font-semibold text-center ">Seat left</p>
               </div>
             </div>
 
@@ -358,7 +358,7 @@
                   <p class="text-sm font-semibold  w-20 text-end">BDT <span id="totalPriceOfTickets"></span></p>
                 </div>
                 <!-- Enter coupon -->
-                <div class="flex gap-2">
+                <div id="displayInput" class="flex gap-2 ">
                   <input id="couponInput" type="text" placeholder="Enter Your Coupon here"
                     class="input input-bordered input-success w-full max-w-xs" />
                   <button id="buttonApply" class="btn bg-green-600 text-white">Apply</button>
@@ -387,7 +387,7 @@
                     <div class="label">
                       <span class="label-text text-sm font-semibold text-start">Phone Number</span>
                     </div>
-                    <input type="text" placeholder="Enter your phone number"
+                    <input id="phone-number" type="tel" placeholder="Enter your phone number"
                       class="input input-bordered w-full max-w-xs" />
                   </label>
                   <!-- email lable -->
@@ -397,7 +397,8 @@
                     </div>
                     <input type="text" placeholder="Enter your email ID" class="input input-bordered w-full max-w-xs" />
                   </label>
-                  <button class="btn bg-green-600 text-white w-full mt-2">Next</button>
+                  <a id="btn-delete"  href="#my_modal_8"
+                    class="btn bg-green-600 text-white w-full mt-2">Next</a>
                   <!-- link part -->
                   <div class=" flex justify-between my-2">
                     <a class="link link-hover">Terms and Conditions</a>
@@ -444,12 +445,19 @@
     const colorButton = document.getElementsByClassName('bg-slate-200');
     // const greenColourButton = document.getElementsByClassName('.bg-green-400');
     const seatCount = document.getElementById('seatCount');
+    const seatLeft = document.getElementById('seat-left');
+    const phoneNumber = document.getElementById('phone-number');
+    const buttonNext = document.getElementById('btn-delete');
 
     for (const button of colorButton) {
-      const greenColourButton = document.getElementsByClassName('bg-green-400');
+
       // console.log("greenColourButton is working");
+
+
+
       button.addEventListener('click', function () {
-        if (button.classList.contains('bg-slate-200') && greenColourButton.length < 4) {
+        const selectedBtn = document.querySelectorAll('.bg-green-400');
+        if (button.classList.contains('bg-slate-200') && selectedBtn.length < 4) {
           button.classList.remove('bg-slate-200');
           button.classList.add('bg-green-400');
         }
@@ -457,13 +465,23 @@
           button.classList.remove('bg-green-400');
           button.classList.add('bg-slate-200');
         }
+        // console.log(greenColourButton.length)
         updateSeatCount();
         totalPrice();
+        updateSeatLeft();
+        nextBtnDisable();
       })
     }
+
     function updateSeatCount() {
       const selectedBtn = document.querySelectorAll('.bg-green-400');
       seatCount.innerText = selectedBtn.length;
+    }
+    function updateSeatLeft() {
+      const selectedBtn = document.querySelectorAll('.bg-green-400');
+      const seatSelected = selectedBtn.length;
+      const seatRemain = 24 - seatSelected;
+      seatLeft.innerText = seatRemain;
     }
     function totalPrice() {
       const ticketNumberShow = document.getElementById('seatCount');
@@ -480,6 +498,19 @@
       totalPriceDisplay.innerText = totalTicketPrice;
 
     }
+    // buttonNext.addEventListener('click', function nextBtnDisable() {
+    //   const selectedBtn = document.querySelectorAll('.bg-green-400');
+    //   const numInput = document.getElementById('phone-number');
+    //   const buttonNext = document.getElementById('btn-delete');
+
+    //   if (selectedBtn.length > 0 && numInput.value.length >= 11) {
+    //     buttonNext.removeAttribute('disabled');
+    //   } else {
+    //     buttonNext.setAttribute('disabled',);
+    //   }
+    // });
+
+
 
     // coupon part
 
@@ -487,6 +518,7 @@
     const applyButton = document.getElementById('buttonApply');
     const inputCoupon = document.getElementById('couponInput');
     const grandTotal = document.getElementById('grandPriceOfTickets');
+    const inputDiv = document.getElementById('displayInput');
 
     applyButton.addEventListener('click', function () {
       if (inputCoupon.value === 'NEW15') {
@@ -503,11 +535,33 @@
         inputCoupon.value = '';
 
       }
+      inputDisplay()
     })
+
+    function inputDisplay() {
+      if (totalTicket.innerText != grandTotal.innerText) {
+        inputDiv.classList.add('hidden');
+      }
+
+    }
+    inputDisplay();
+
+
+
 
 
 
   </script>
+  <div class="modal" role="dialog" id="my_modal_8">
+    <div class="modal-box flex flex-col justify-center items-center w-full">
+      <img class="w-28 mb-4" src="images/success.png" alt="">
+      <h3 class="font-bold text-lg">Success</h3>
+      <p class="py-4">Thank You For Booking</p>
+      <div class="modal-action">
+        <a href="#" class="btn bg-green-600 text-white w-64 ">Continue</a>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

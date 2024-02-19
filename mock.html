@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <!-- seat price & coupon part -->
+    <div class="card w-96 bg-base-100 shadow-xl p-2 mt-4">
+        <div class="card-body">
+            <!-- index part -->
+            <div class="flex justify-between gap-4">
+                <!-- seat count -->
+                <div class="flex gap-2 w-20">
+                    <p class="text-sm font-semibold">Seat</p>
+                    <p id="seatCount" class="text-sm font-semibold bg-green-600 px-2 rounded-lg text-white text-center">
+                        0</p>
+                </div>
+                <p class="text-sm font-semibold w-20 text-center">Class</p>
+                <p class="text-sm font-semibold text-end w-20">Price</p>
+            </div>
+            <hr>
+            <!-- ticket description -->
+            <div class="flex justify-between gap-4 p-2">
+                <p class="text-sm font-semibold  w-20 text-start">C2</p>
+                <p class="text-sm font-semibold  w-20 text-center">Economy</p>
+                <p class="text-sm font-semibold  w-20 text-end">550</p>
+            </div>
+            <div id="ticketDetail" class="">
+                <div class="flex justify-between gap-4 p-2">
+                    <p class="text-sm font-semibold  w-20 text-start">C2</p>
+                    <p class="text-sm font-semibold  w-20 text-center">Economy</p>
+                    <p class="text-sm font-semibold  w-20 text-end">550</p>
+                </div>
+                <hr>
+                <!-- total price -->
+                <div class="flex justify-between gap-4 p-2">
+                    <p class="text-sm font-semibold  w-20 text-start">Total Price</p>
+                    <p class="text-sm font-semibold  w-20 text-end">BDT <span id="totalPriceOfTickets"></span></p>
+                </div>
+            </div>
+            <!-- Enter coupon -->
+            <div class="flex gap-2">
+                <input type="text" placeholder="Enter Your Coupon here"
+                    class="input input-bordered input-success w-full max-w-xs" />
+                <button class="btn bg-green-600 text-white">Apply</button>
+            </div>
+            <!-- grand total -->
+            <div class="flex justify-between gap-4 p-2">
+                <p class="text-sm font-semibold  w-20 text-start">Grand Total</p>
+                <p class="text-sm font-semibold  w-20 text-end">BDT <span id=""></span></p>
+            </div>
+        </div>
+    </div>
+
+    <button id="colorBtn" class="btn bg-slate-200">Click Me</button>
+    <div class="flex">
+        <!-- abc row -->
+        <div class="flex flex-col gap-4 ">
+            <p class="text-sm font-semibold p-4">A</p>
+            <p class="text-sm font-semibold p-4">B</p>
+            <p class="text-sm font-semibold p-4">C</p>
+            <p class="text-sm font-semibold p-4">D</p>
+            <p class="text-sm font-semibold p-4">E</p>
+            <p class="text-sm font-semibold p-4">F</p>
+        </div>
+
+        <!-- seats -->
+        <div id="seatContainer" class="seats grid grid-cols-4 grid-rows-6 gap-4 w-full">
+            <button class="btn bg-slate-200 px-12">A1</button>
+            <button class="btn bg-slate-200 px-12">A2</button>
+            <button class="btn bg-slate-200 px-12">A3</button>
+            <button class="btn bg-slate-200 px-12">A4</button>
+            <button class="btn bg-slate-200 px-12">B1</button>
+            <button class="btn bg-slate-200 px-12">B2</button>
+            <button class="btn bg-slate-200 px-12">B3</button>
+            <button class="btn bg-slate-200 px-12">B4</button>
+            <button class="btn bg-slate-200 px-12">C1</button>
+            <button class="btn bg-slate-200 px-12">C2</button>
+            <button class="btn bg-slate-200 px-12">C3</button>
+            <button class="btn bg-slate-200 px-12">C4</button>
+            <button class="btn bg-slate-200 px-12">D1</button>
+            <button class="btn bg-slate-200 px-12">D2</button>
+            <button class="btn bg-slate-200 px-12">D3</button>
+            <button class="btn bg-slate-200 px-12">D4</button>
+            <button class="btn bg-slate-200 px-12">E1</button>
+            <button class="btn bg-slate-200 px-12">E2</button>
+            <button class="btn bg-slate-200 px-12">E3</button>
+            <button class="btn bg-slate-200 px-12">E4</button>
+            <button class="btn bg-slate-200 px-12">F1</button>
+            <button class="btn bg-slate-200 px-12">F2</button>
+            <button class="btn bg-slate-200 px-12">F3</button>
+            <button class="btn bg-slate-200 px-12">F4</button>
+        </div>
+    </div>
+
+    <script>
+        const colorButtons = document.getElementsByClassName('bg-slate-200');
+        // const greenColourButton = document.getElementsByClassName('.bg-green-400');
+        const seatCount = document.getElementById('seatCount');
+
+        for (const button of colorButtons) {
+            button.addEventListener('click', function () {
+                const greenColourButton = document.getElementsByClassName('bg-green-400');
+                // console.log("greenColourButton is working");
+
+                if (button.classList.contains('bg-slate-200') && greenColourButton.length < 4) {
+                    button.classList.remove('bg-slate-200');
+                    button.classList.add('bg-green-400');
+                } else {
+                    button.classList.remove('bg-green-400');
+                    button.classList.add('bg-slate-200');
+                }
+                updateSeatCount();
+                totalPrice();
+            })
+        }
+        function updateSeatCount() {
+            const greenButtons = document.querySelectorAll('.bg-green-400');
+            seatCount.innerText = greenButtons.length; // Automatic conversion to string
+        }
+
+        function totalPrice() {
+            const ticketNumberShow = document.getElementById('seatCount');
+            // console.log("ticketNumberShow" );
+            const ticketNumberText = ticketNumberShow.innerText;
+            // console.log(ticketNumberText);
+            const ticketNum = parseInt(ticketNumberText);
+            // console.log(ticketNum);
+
+            const totalTicketPrice = ticketNum * 550;
+            // console.log(totalTicketPrice);
+            const totalPriceDisplay = document.getElementById('totalPriceOfTickets');
+
+            totalPriceDisplay.innerText = totalTicketPrice;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
